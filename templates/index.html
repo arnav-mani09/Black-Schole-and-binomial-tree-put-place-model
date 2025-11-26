@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Option Pricing Playground</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  </head>
+  <body>
+    <main>
+      <section class="controls">
+        <h1>Option Pricing Playground</h1>
+        <div class="grid">
+          <label>Model
+            <select id="model">
+              <option value="bs">Black-Scholes</option>
+              <option value="binomial">Binomial</option>
+            </select>
+          </label>
+          <label>Option Type
+            <select id="optionType">
+              <option value="call">Call</option>
+              <option value="put">Put</option>
+            </select>
+          </label>
+          <label>Spot
+            <input type="number" id="spot" value="100" step="1" />
+          </label>
+          <label>Strike
+            <input type="number" id="strike" value="100" step="1" />
+          </label>
+          <label>Maturity (years)
+            <input type="number" id="maturity" value="1" step="0.1" />
+          </label>
+          <label>Rate
+            <input type="number" id="rate" value="0.05" step="0.01" />
+          </label>
+          <label>Volatility
+            <input type="number" id="vol" value="0.2" step="0.01" />
+          </label>
+          <label>Binomial Steps
+            <input type="number" id="steps" value="100" step="10" />
+          </label>
+          <label>Spot Range
+            <input type="text" id="spotRange" value="60,140" />
+          </label>
+          <label>Vol Range
+            <input type="text" id="volRange" value="0.05,0.6" />
+          </label>
+          <label>Grid Size
+            <input type="number" id="grid" value="40" step="5" />
+          </label>
+        </div>
+        <div class="actions">
+          <button id="priceBtn">Get Price</button>
+          <button id="heatmapBtn">Update Heatmap</button>
+          <span id="priceOutput"></span>
+        </div>
+      </section>
+      <section class="chart">
+        <div id="heatmap"></div>
+      </section>
+    </main>
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+  </body>
+</html>
